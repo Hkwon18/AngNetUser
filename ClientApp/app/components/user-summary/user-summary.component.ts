@@ -8,4 +8,5 @@ import { User } from '../shared/user-type';
 })
 export class UserSummaryComponent {
     @Input() user: User;
+
 }

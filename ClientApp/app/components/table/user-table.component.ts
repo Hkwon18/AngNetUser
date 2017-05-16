@@ -12,6 +12,9 @@ export class UserTableComponent {
     constructor(private userService: UserService) {
     }
 
+    onChanged(user: User) {
+        this.userService.AddUser(user).then(users => this.userList = users);
+    }
     ngOnInit() {
         this.userService.getUserList().then(users => this.userList = users);
     }

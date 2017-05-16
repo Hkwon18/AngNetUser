@@ -2,14 +2,14 @@
      [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1>{{selectedUser.name}}</h1>
+            <div>
+                <ng-content select=".modal-header"></ng-content>
             </div>
-            <div class="modal-body">
-                <p>{{selectedUser.email}} <br/> {{selectedUser.joined}}</p>
+            <div>
+                <ng-content select=".modal-body"></ng-content>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" (click)="hide()">Close</button>
+            <div>
+                <ng-content select=".modal-footer"></ng-content>
             </div>
         </div>
     </div>

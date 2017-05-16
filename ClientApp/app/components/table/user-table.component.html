@@ -1,10 +1,59 @@
 ﻿<div class="panel panel-default panel-primary">
-    <modal-popup #modal></modal-popup>
-    <div class="panel-heading">
-        <h3 class="panel-title">User Summaries</h3>
+    <modal-popup #viewModal>
+        <div class="modal-header">
+            <h1>{{viewModal.selectedUser.firstName}} {{viewModal.selectedUser.lastName}}</h1>
+        </div>
+
+        <div class="modal-body">
+            <label><strong>Email: </strong></label>
+            <span>{{viewModal.selectedUser.email}}</span><br />
+
+            <label><strong>Joined: </strong></label>
+            <span>{{viewModal.selectedUser.joined | date}}</span><br />
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="viewModal.hide()">Close</button>
+        </div>
+    </modal-popup>
+    
+    <modal-popup #createModal (onAddClicked)="this.onChanged($event)">
+        <div class="modal-header">
+            <h1> Create User</h1>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <label class="col-sm-3"><strong>First Name: </strong></label>
+                <input  class="entry input-group col-sm-5" [(ngModel)]="createModal.selectedUser.firstName" name="First Name"type="text"/><br />
+
+                <label class="col-sm-3"><strong>Last Name: </strong></label>
+                <input  class="entry input-group col-sm-5" [(ngModel)]="createModal.selectedUser.lastName" name="LastName" type="text"/><br />
+
+                <label class="col-sm-3"><strong>Email: </strong></label>
+                <input  class="entry input-group col-sm-5" [(ngModel)]="createModal.selectedUser.email" name="Email" type="text"/><br />
+
+                <label class="col-sm-3"><strong>Joined: </strong></label>
+                <input  class="entry input-group col-sm-5" [(ngModel)]="createModal.selectedUser.joined" name="Joined" type="date"/>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="createModal.AddUser(createModal.selectedUser)">Save Changes</button>
+            <button type="button" class="btn btn-default" (click)="createModal.hide()">Cancel</button>
+        </div>
+    </modal-popup>
+
+    <div class="panel-heading clearfix">
+       <h3 class="panel-title pull-left">User Summaries</h3>
+        <div class='btn-group pull-right'>
+            <button class="btn btn-primary btn-sm" 
+                    (click) ="createModal.showNoUser()"> Add User 
+            </button>
+        </div>
+
     </div>
     <div class="panel-body">
         <p *ngIf="!userList">No Current Users...</p>
-        <user-summary *ngFor="let item of userList" [user]="item" (click) ="modal.show(item)"></user-summary>
+        <user-summary *ngFor="let item of userList" 
+                      [user]="item" (click)="viewModal.showUser(item)">
+        </user-summary>
     </div>
 </div>
