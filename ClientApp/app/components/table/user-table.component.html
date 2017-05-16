@@ -1,0 +1,10 @@
+﻿<div class="panel panel-default panel-primary">
+    <modal-popup #modal></modal-popup>
+    <div class="panel-heading">
+        <h3 class="panel-title">User Summaries</h3>
+    </div>
+    <div class="panel-body">
+        <p *ngIf="!userList">No Current Users...</p>
+        <user-summary *ngFor="let item of userList" [user]="item" (click) ="modal.show(item)"></user-summary>
+    </div>
+</div>
