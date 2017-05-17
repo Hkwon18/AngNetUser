@@ -18,15 +18,15 @@ namespace AngNetUser.Controllers
         [HttpGet("[action]")]
         public IActionResult GetUserList()
         {
+
             return new ObjectResult(_userList);
         }
-        [HttpPost]
-        public IActionResult Post([FromBody]User user)
+        [HttpPost("[action]")]
+        public IActionResult AddUser([FromBody]User user)
         {
             _userList.Add(user);
             return new ObjectResult(_userList);
-        }
-        
+        }   
     }
 
     public class User

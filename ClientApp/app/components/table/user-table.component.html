@@ -16,7 +16,7 @@
         </div>
     </modal-popup>
     
-    <modal-popup #createModal (onAddClicked)="this.onChanged($event)">
+    <modal-popup #createModal (onAddClicked)="this.onAddUser($event)">
         <div class="modal-header">
             <h1> Create User</h1>
         </div>
@@ -36,7 +36,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="createModal.AddUser(createModal.selectedUser)">Save Changes</button>
+            <button type="button" class="btn btn-primary" (click)="createModal.addUser(createModal.selectedUser)">Save Changes</button>
             <button type="button" class="btn btn-default" (click)="createModal.hide()">Cancel</button>
         </div>
     </modal-popup>
@@ -48,11 +48,13 @@
                     (click) ="createModal.showNoUser()"> Add User 
             </button>
         </div>
-
+       
     </div>
     <div class="panel-body">
+        <label> Filter Users:</label>
+        <input class="well well-sm" type="text" [(ngModel)]="term" />
         <p *ngIf="!userList">No Current Users...</p>
-        <user-summary *ngFor="let item of userList" 
+        <user-summary *ngFor="let item of userList | myfilter: term"
                       [user]="item" (click)="viewModal.showUser(item)">
         </user-summary>
     </div>

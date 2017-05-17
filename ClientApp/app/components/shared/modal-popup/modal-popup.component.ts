@@ -1,11 +1,12 @@
 ﻿import { Component, Output, EventEmitter } from '@angular/core';
 import { User } from '../user-type';
 
-@Component({
+@
+Component({
     selector: 'modal-popup',
     templateUrl: './modal-popup.component.html',
-    styles: ['.modal {background: rgba(0,0,0,0.6);}']
-})
+    styles: ['.modal {background: rgba(0,0,0,0.6);}'],
+}) 
 
 export class ModalComponent {
 
@@ -43,7 +44,7 @@ export class ModalComponent {
         }
     }
 
-    public AddUser(user: User) {
+    public addUser(user: User) {
         this.onAddClicked.emit(user);
         this.hide();
     }

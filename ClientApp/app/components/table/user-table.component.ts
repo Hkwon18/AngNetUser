@@ -4,7 +4,8 @@ import { UserService } from '../shared/user-service';
 
 @Component({
     selector: 'user-table',
-    templateUrl: './user-table.component.html'
+    templateUrl: './user-table.component.html',
+
 })
 export class UserTableComponent {
     userList: User[];
@@ -12,8 +13,8 @@ export class UserTableComponent {
     constructor(private userService: UserService) {
     }
 
-    onChanged(user: User) {
-        this.userService.AddUser(user).then(users => this.userList = users);
+    onAddUser(user: User) {
+        this.userService.addUser(user).then(users => this.userList = users);
     }
     ngOnInit() {
         this.userService.getUserList().then(users => this.userList = users);

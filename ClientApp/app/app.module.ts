@@ -11,6 +11,7 @@ import { UserTableComponent } from './components/table/user-table.component';
 import { UserSummaryComponent } from './components/user-summary/user-summary.component';
 import { ModalComponent } from './components/shared/modal-popup/modal-popup.component';
 import { UserService } from './components/shared/user-service';
+import { MyFilterPipe } from './components/shared/filter';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -20,7 +21,8 @@ import { UserService } from './components/shared/user-service';
         HeaderComponent,
         UserTableComponent,
         UserSummaryComponent,
-        ModalComponent
+        ModalComponent,
+        MyFilterPipe
     ],
     imports: [
         FormsModule,
