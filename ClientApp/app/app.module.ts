@@ -27,7 +27,7 @@ import { MyFilterPipe } from './components/shared/filter';
     imports: [
         FormsModule,
         CommonModule,
-        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        UniversalModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },

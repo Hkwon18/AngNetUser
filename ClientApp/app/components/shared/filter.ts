@@ -16,6 +16,7 @@ export class MyFilterPipe implements PipeTransform {
             return items.filter(user => {
                 return user.firstName.toLocaleLowerCase().includes(term.toLowerCase()) ||
                     user.lastName.toLocaleLowerCase().includes(term.toLowerCase()) ||
+                    user.userName.toLocaleLowerCase().includes(term.toLowerCase()) ||
                     user.email.toLocaleLowerCase().includes(term.toLowerCase()) ;
             });
         }

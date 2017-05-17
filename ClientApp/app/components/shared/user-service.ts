@@ -9,6 +9,7 @@ export class UserService {
     {
     }
 
+    //Client-side Web API layer
     getUserList() {
         return this.http.get('api/DB/GetUserList').map(response => response.json() as User[]).toPromise();
     }
@@ -21,8 +22,8 @@ export class UserService {
             .map(response => response.json() as User[])
            .toPromise().catch(this.handleError);
     }
-    //response => response.json() as User[]
 
+    //Handle a bad request from the server
     private handleError(error: any) {
         alert('User already exists. Could not add user.');
         return this.getUserList();

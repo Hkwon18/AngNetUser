@@ -27,6 +27,7 @@ namespace AngNetUser.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // specify indexes to map
             modelBuilder.Entity<User>().HasIndex(e => e.Id).IsUnique()
                 .ForSqlServerIsClustered(false);
 
