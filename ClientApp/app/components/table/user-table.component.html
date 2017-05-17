@@ -23,20 +23,40 @@
         <div class="modal-body">
             <form class="form-horizontal">
                 <label class="col-sm-3"><strong>First Name: </strong></label>
-                <input  class="entry input-group col-sm-5" [(ngModel)]="createModal.selectedUser.firstName" name="First Name"type="text"/><br />
+                <input  class="entry input-group col-sm-5" required maxlength = "50" 
+                        [(ngModel)]="createModal.selectedUser.firstName" 
+                        name="FirstName" type="text" #firstname="ngModel"/>
+                <br />
 
                 <label class="col-sm-3"><strong>Last Name: </strong></label>
-                <input  class="entry input-group col-sm-5" [(ngModel)]="createModal.selectedUser.lastName" name="LastName" type="text"/><br />
+                <input  class="entry input-group col-sm-5" required maxlength = "50" 
+                        [(ngModel)]="createModal.selectedUser.lastName" 
+                        name="LastName" type="text" #lastname="ngModel"/>
+                <br />
+
+                <label class="col-sm-3"><strong>Username: </strong></label>
+                <input  class="entry input-group col-sm-5" required maxlength = "50" 
+                        [(ngModel)]="createModal.selectedUser.userName" 
+                       name="UserName" type="text" #username="ngModel"/>
+                <br />
 
                 <label class="col-sm-3"><strong>Email: </strong></label>
-                <input  class="entry input-group col-sm-5" [(ngModel)]="createModal.selectedUser.email" name="Email" type="text"/><br />
-
-                <label class="col-sm-3"><strong>Joined: </strong></label>
-                <input  class="entry input-group col-sm-5" [(ngModel)]="createModal.selectedUser.joined" name="Joined" type="date"/>
+                <input  class="entry input-group col-sm-5" required maxlength = "50" 
+                       [(ngModel)]="createModal.selectedUser.email" name="email" type="text"
+                        pattern="^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-zA-Z0–9-]+$" #email="ngModel" />
+                <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger" 
+                     [hidden]="!email.errors.pattern">
+                        Email field is required and must be valid
+                </div>
+                <br />
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="createModal.addUser(createModal.selectedUser)">Save Changes</button>
+            <button type="button" class="btn btn-primary" (click)="createModal.addUser(createModal.selectedUser)"
+                    [disabled]=
+                    "firstname.errors || lastname.errors || username.errors || email.errors">
+                    Save Changes
+            </button>
             <button type="button" class="btn btn-default" (click)="createModal.hide()">Cancel</button>
         </div>
     </modal-popup>

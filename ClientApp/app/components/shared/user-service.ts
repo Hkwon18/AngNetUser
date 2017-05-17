@@ -19,8 +19,12 @@ export class UserService {
         let options = new RequestOptions({ headers: headers });
         return this.http.post('api/DB/AddUser', body, options)
             .map(response => response.json() as User[])
-           .toPromise();
-
+           .toPromise().catch(this.handleError);
     }
+    //response => response.json() as User[]
 
+    private handleError(error: any) {
+        alert('User already exists. Could not add user.');
+        return this.getUserList();
+    }
 }
