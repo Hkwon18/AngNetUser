@@ -31,10 +31,10 @@ namespace AngNetUser.Context
             modelBuilder.Entity<User>().HasIndex(e => e.Id).IsUnique()
                 .ForSqlServerIsClustered(false);
 
-            modelBuilder.Entity<User>().HasIndex(e => e.FirstName).IsUnique()
+            modelBuilder.Entity<User>().HasIndex(e => e.FirstName).IsUnique(false)
                 .ForSqlServerIsClustered(false);
 
-            modelBuilder.Entity<User>().HasIndex(e => e.LastName).IsUnique()
+            modelBuilder.Entity<User>().HasIndex(e => e.LastName).IsUnique(false)
                 .ForSqlServerIsClustered(false);
 
             modelBuilder.Entity<User>().HasIndex(e => e.Email).IsUnique()
