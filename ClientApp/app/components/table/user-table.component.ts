@@ -15,6 +15,7 @@ export class UserTableComponent {
 
     onAddUser(user: User) {
         this.userService.addUser(user).then(users => this.userList = users);
+ 
     }
     ngOnInit() {
         this.userService.getUserList().then(users => this.userList = users);

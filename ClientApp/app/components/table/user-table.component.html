@@ -40,6 +40,12 @@
                        name="UserName" type="text" #username="ngModel"/>
                 <br />
 
+                <label class="col-sm-3"><strong>Age: </strong></label>
+                <input  class="entry input-group col-sm-5" required maxlength = "50" 
+                        [(ngModel)]="createModal.selectedUser.age" 
+                        name="Age" type="number" #username="ngModel"/>
+                <br />
+
                 <label class="col-sm-3"><strong>Email: </strong></label>
                 <input  class="entry input-group col-sm-5" required maxlength = "50" 
                        [(ngModel)]="createModal.selectedUser.email" name="email" type="text"
@@ -77,5 +83,8 @@
         <user-summary *ngFor="let item of userList | myfilter: term"
                       [user]="item" (click)="viewModal.showUser(item)">
         </user-summary>
+        <div>
+            <p *ngIf="userList"> Number of Users: {{userList?.length}}</p>
+        </div>
     </div>
 </div>
